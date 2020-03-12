@@ -63,7 +63,7 @@ $ rosrun continuous_data_record_ros record_stop.py
 ## Publisher
 * None  
 ### rosservice
-* /wrc_pick:wrc_pick/Number2Bool  
+* None  
 ## remap
 * None  
 ## Parametor
@@ -79,19 +79,10 @@ $ rosrun continuous_data_record_ros record_stop.py
 ### 
 
 ##  7. <a name='DeveloperInformation'></a>Developer Information
-- Developer: 岩田健輔
-- Maintainer: 岩田健輔
-- Reviewer: ???
+
 
 ##  8. <a name='Citations'></a>Citations
-```
-@inproceedings{xiang2018posecnn,
-    Author = {Xiang, Yu and Schmidt, Tanner and Narayanan, Venkatraman and Fox, Dieter},
-    Title = {PoseCNN: A Convolutional Neural Network for 6D Object Pose Estimation in Cluttered Scenes},
-    Journal   = {Robotics: Science and Systems (RSS)},
-    Year = {2018}
-}
-```
+
 
 ##  9. <a name='License'></a>License
 このコードはHSR専用のコードを含むため,外部への公開は厳禁です.
@@ -104,17 +95,6 @@ $ rosrun continuous_data_record_ros record_stop.py
 ##  11. <a name='Requirement'></a>Requirement
 
 ##  12. <a name='Dependences'></a>Dependences
-* DenseFusion[http://zaku.sys.es.osaka-u.ac.jp:10080/iwata/dense_fusion_ros]  
-* PoseCNN[http://zaku.sys.es.osaka-u.ac.jp:10080/iwata/posecnn_ros]  
-* wrc_grasp_detection[http://zaku.sys.es.osaka-u.ac.jp:10080/OHMORI/wrc_grasp_detection]  
+
 ##  13. <a name='Installation'></a>Installation
 
-Docker build時に，リポジトリのディレクトリの外に出る必要があるが，docker ignoreに他のファイルを記述しきれないため，tmpファイル内で作業する.
-```bash
-# How to build docker image
-$ mkdir tmp
-$ cd tmp
-$ git clone http://zaku.sys.es.osaka-u.ac.jp:10080/iwata/wrc_pick.git
-$ cd wrc_pick/docker
-$ ./build.sh
-```
