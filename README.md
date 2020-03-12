@@ -1,8 +1,7 @@
-# wrc_pick
+# continuous_data_record_ros
 
 ##  1. <a name='Overview'></a>Overview
-指定した物体IDの物体を把持するROSService
-
+連続情報の保存と出力を,ROSbagベースに行うためのプログラム
 ##  2. <a name='TableofContents'></a>Table of Contents
 <!-- vscode-markdown-toc -->
 * 1. [Overview](#Overview)
