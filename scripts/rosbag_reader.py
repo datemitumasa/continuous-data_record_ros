@@ -13,7 +13,7 @@ import pickle
 import numpy as np
 import os
 from continuous_data_record_ros.srv import RosbagPlay
-from continuous_data_record_ros.srv import RosbagPlayRequest8)
+from continuous_data_record_ros.srv import RosbagPlayRequest
 
 BAG = os.getenv("BAG_FOLDA")
 if BAG == None:
@@ -83,11 +83,4 @@ class JointBagReader(object):
         topics = desirialize(data, mes_type)
         return topics
 
-if __name__ =="__main__":
-    rospy.init_node("joint_reader")
-    jb = JointBagReader()
-    j , e, v = jb.joint_get("joint_bag", rospy.Time(0), rospy.Time(0), rospy.Time(0), 4)
-    print len(j)
-    print len(e)
-    print len(v)
-    print jb.get_name()
+
