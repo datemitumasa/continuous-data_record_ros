@@ -33,11 +33,6 @@
 - [ ] Docker 化
 ##  4. <a name='QuickStart'></a>Quick Start
 
-```bash
-# 準備   
-$ git clone https://github.com/datemitumasa/continuous_data_record_ros.git
-```
-
 ```bash  
 # 連続データのpublish  
 $ rosrun continuous_data_record_ros continuous_data_publisher.py  
@@ -53,6 +48,11 @@ $ rosrun continuous_data_record_ros rosbag_database.py
 $ rosrun continuous_data_record_ros record_start.py  
 # ROSbag保存終了
 $ rosrun continuous_data_record_ros record_stop.py  
+```
+
+```bash
+# 保存したROSbagの抽出
+$ rosrun continuous_data_record_ros read_sample.py  
 ```
 
 
@@ -98,3 +98,10 @@ $ rosrun continuous_data_record_ros record_stop.py
 
 ##  13. <a name='Installation'></a>Installation
 
+```bash
+# 準備   
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/datemitumasa/continuous_data_record_ros.git
+$ cd ~/catkin_ws
+$ catkin_make && source devel/setup.bash
+```
