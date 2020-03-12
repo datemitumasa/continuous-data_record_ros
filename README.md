@@ -27,43 +27,35 @@
 
 
 ##  3. <a name='Status'></a>Status
-2020/03/06: ROS Service作成  
-2020/03/08: beta版リリース  
-2020/03/10: 正式版リリース  
+2020/03/12: repositry made  
 ### TODO
-- [☓] 把持確認ROSServiceの組み込み
-- [ ] ROS Action 化
-- [☓] Docker 化
-
+- [ ] コード整理
+- [ ] ドキュメント作成
+- [ ] Docker 化
 ##  4. <a name='QuickStart'></a>Quick Start
 
 ```bash
 # 準備   
-$ git clone http://zaku.sys.es.osaka-u.ac.jp:10080/iwata/posecnn_ros.git
-$ cd wrc_pick/docker
-$ ./compose_up_real.sh  
+$ git clone https://github.com/datemitumasa/continuous_data_record_ros.git
 ```
 
 ```bash  
-# ROSServiceの使い方  
-$ from wrc_pick.srv import Number2Bool, Number2BoolRequest  
-$ import rospy  
-$ rospy.init_node("test")  
-$ srv = rospy.ServiceProxy("/wrc_pick", Number2Bool)  
-$ req = Number2BoolRequest()  
-# 把持させたい物体IDを入力する  
-# 指定可能なDenseFusionの物体ID:[1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 18, 19, 21]  
-$ req.number = 1  
-# 物体把持のIKを解いて,手先が適切に動いたかをTrue or False で返す  
-# 物体把持のIKを解いて,手先が適切に動いて,物体を把持できたかをTrue or False で返す  
-$ res = srv.call(req)  
-$ print res.success  
-
+# 連続データのpublish  
+$ rosrun continuous_data_record_ros continuous_data_publisher.py  
 ```
 
 ```bash
-# ROSアクションでの実行 [見送り]
+# ROSbag保存用プログラムの実行
+$ rosrun continuous_data_record_ros rosbag_database.py  
 ```
+
+```bash
+# ROSbag保存開始
+$ rosrun continuous_data_record_ros record_start.py  
+# ROSbag保存終了
+$ rosrun continuous_data_record_ros record_stop.py  
+```
+
 
 ##  5. <a name='API'></a>API
 ### rostopic
@@ -76,12 +68,13 @@ $ print res.success
 ## remap
 * None  
 ## Parametor
-* src/yaml/object_list.yaml:物体IDとそれに対応したTFの名称一覧  
-* src/yaml/object_pose.yaml:物体基準座標系での把握位置を編集できる  
-* src/yaml/collision.yaml:関節の禁止領域の設定(MAP依存)
-* src/yaml/finger_distance.yaml:物体把持時に物体幅に合わせて開く手先の距離
-* DISTANCE:物体把持時にどれだけ手前から手を近づけるかの距離  
-* BACK:物体把握後にどれだけ手を下げるかの距離  
+* config/parametor.yaml:  
+    - continuous_publish:  
+        - topic_name    : 'continuous_data_publisher'で発行する連続情報のTopicName  
+        - base_frame_id : 'continuous_data_publisher'で発行する連続情報の親Tf  
+        - child_frame_id: 'continuous_data_publisher'で発行する連続情報のTf  
+        - publish_hz    : 'continuous_data_publisher'で発行する連続情報の発行周期  
+    - record_topic: 'record_start'で保存するTopicName  
 ##  6. <a name='Artifacts'></a>Artifacts
 - None
 ### 

@@ -138,8 +138,7 @@ class RosbagRecorder(object):
         rb.start()
         
         res.record_time = rospy.Time.now()
-        res.record_number = int(rb.pid)
-        self.rb_administrator.update({int(rb.pid):remind_data})
+        res.success = True
         return res
     
 
@@ -147,19 +146,15 @@ class RosbagRecorder(object):
 ##      停止
         num = data.rosbag_number
         res = RosbagStopResponse()
-        if not num in self.rb_administrator:
-            rospy.logwarn("no number")
-            return res            
-        ps = Process(target=os.system, args=["rosnode kill /{0:s}".format(self.rb_administrator[num][-1])])
+        if data.node_name == ""
+            node_name = NODE_NAME 
+        else:
+            node_name = data.node_name
+        ps = Process(target=os.system, args=["rosnode kill /{0:s}".format(node_name)])
         ps.start()
 ##      残ったものの処理
-        rospy.sleep(5)
-        name = self.rb_administrator[num][-2]
-        number = _check_file(name)
-#        active_name =name + "_{0:d}.bag.active".format(number)
-        self.rb_record.update({num:self.rb_administrator.pop(num).append(number)})
-        res.count_number = number
-        res.bag_name = name
+        rospy.sleep(1.)
+        res.success = True
         return res
         
     def _read_bag(self,data):
