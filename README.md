@@ -6,17 +6,16 @@
 <!-- vscode-markdown-toc -->
 * 1. [Overview](#Overview)
 * 2. [Table of Contents](#TableofContents)
-* 3. [Status](#Status)
-* 4. [Quick Start](#QuickStart)
-* 5. [API](#API)
-* 6. [Artifacts](#Artifacts)
-* 7. [Developer Information](#DeveloperInformation)
-* 8. [Citations](#Citations)
-* 9. [License](#License)
-* 10. [Code Structure](#CodeStructure)
-* 11. [Requirement](#Requirement)
-* 12. [Dependences](#Dependences)
-* 13. [Installation](#Installation)
+* 3. [Requirements](#Requirements)
+* 4. [Dependences](#Dependences)
+* 5. [Code Structure](#CodeStructure)
+* 6. [Datasets](#Datasets)
+* 7. [Training](#Training)
+* 8. [Results](#Training)
+* 9. [Generate Trajectory](#GenerateTrajectory)
+* 10. [Tips for your own dataset](#TipsforyourownDataset)
+* 11. [Citations](#Citations)
+* 12. [License](#Requirement)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -25,13 +24,10 @@
 <!-- /vscode-markdown-toc -->
 
 
-##  3. <a name='Status'></a>Status
-2020/03/12: repositry made  
-### TODO
-- [ ] コード整理
-- [ ] ドキュメント作成
-- [ ] Docker 化
-##  4. <a name='QuickStart'></a>Quick Start
+##  3. <a name='Requirements'></a>Requirements
+- ROS indigo/kinetic/melodic
+##  4. <a name='Dependences'></a>Dependences
+* None
 
 ```bash  
 # 連続データのpublish  
@@ -56,7 +52,7 @@ $ rosrun continuous_data_record_ros read_sample.py
 ```
 
 
-##  5. <a name='API'></a>API
+##  5. <a name='Code Structure'></a>Code Structure
 ### rostopic
 ## Subscriber
 * None  
@@ -66,7 +62,7 @@ $ rosrun continuous_data_record_ros read_sample.py
 * None  
 ## remap
 * None  
-## Parametor
+## Parameter
 * config/parametor.yaml:  
     - continuous_publish:  
         - topic_name    : 'continuous_data_publisher'で発行する連続情報のTopicName  
