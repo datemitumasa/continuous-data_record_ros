@@ -9,13 +9,7 @@
 * 3. [Requirements](#Requirements)
 * 4. [Dependences](#Dependences)
 * 5. [Code Structure](#CodeStructure)
-* 6. [Datasets](#Datasets)
-* 7. [Training](#Training)
-* 8. [Results](#Training)
-* 9. [Generate Trajectory](#GenerateTrajectory)
-* 10. [Tips for your own dataset](#TipsforyourownDataset)
-* 11. [Citations](#Citations)
-* 12. [License](#Requirement)
+* 6. [Installation](#Installation)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -51,15 +45,22 @@ $ rosrun continuous_data_record_ros record_stop.py
 $ rosrun continuous_data_record_ros read_sample.py  
 ```
 
+```bash
+# TransformStamped型で物体情報を保存した場合の抽出のサンプル
+$ rosrun continuous_data_record_ros read_objectdata.py  
+```
+
 
 ##  5. <a name='Code Structure'></a>Code Structure
 ### rostopic
 ## Subscriber
 * None  
 ## Publisher
-* None  
+* geometry_msgs/JointState : continuous_topic : エンドエフェクタの位置情報  
 ### rosservice
-* None  
+* continuous_data_record_ros/RosbagRecord : rosbag_record : rosbag によるtopicの保存開始  
+* continuous_data_record_ros/RosbagStop : rosbag_record_stop : rosbag によるtopicの保存終了  
+* continuous_data_record_ros/RosbagPlay : rosbag_play : rosbag による保存データの出力,専用のreaderとセットで使用  
 ## remap
 * None  
 ## Parameter
@@ -70,29 +71,8 @@ $ rosrun continuous_data_record_ros read_sample.py
         - child_frame_id: 'continuous_data_publisher'で発行する連続情報のTf  
         - publish_hz    : 'continuous_data_publisher'で発行する連続情報の発行周期  
     - record_topic: 'record_start'で保存するTopicName  
-##  6. <a name='Artifacts'></a>Artifacts
-- None
-### 
 
-##  7. <a name='DeveloperInformation'></a>Developer Information
-
-
-##  8. <a name='Citations'></a>Citations
-
-
-##  9. <a name='License'></a>License
-このコードはHSR専用のコードを含むため,外部への公開は厳禁です.
-
----
-以下オプション
-
-##  10. <a name='CodeStructure'></a>Code Structure
-
-##  11. <a name='Requirement'></a>Requirement
-
-##  12. <a name='Dependences'></a>Dependences
-
-##  13. <a name='Installation'></a>Installation
+##  6. <a name='Installation'></a>Installation
 
 ```bash
 # 準備   
