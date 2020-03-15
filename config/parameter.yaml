@@ -1,0 +1,21 @@
+continuous_publish:
+ topic_name : "continuous_topic"
+ base_frame_id : "map"
+ child_frame_id: "hand_palm_link"
+ publish_hz : 10
+ continuous_data_name: 
+  - "x"
+  - "y"
+  - "z"
+  - "qx"
+  - "qy"
+  - "qz"
+  - "qw"
+record_info:
+ record_topic:
+  - "continuous_topic"
+  - "tf"
+  - "object_data"
+ record_name: "bag_record"
+ record_node_name: "continuous_record"
+ record_split_time: 60

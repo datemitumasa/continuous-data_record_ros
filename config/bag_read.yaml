@@ -1,0 +1,26 @@
+filename:
+ data1: 
+  count_number: 0
+  topic_name: "continuous_topic"
+  record_split_time: 60
+ data2: 
+  count_number: 0
+  topic_name: "continuous_topic"
+  record_split_time: 60
+ data3: 
+  count_number: 0
+  topic_name: "continuous_topic"
+  record_split_time: 60
+ data4: 
+  count_number: 0
+  topic_name: "continuous_topic"
+  record_split_time: 60
+ data5: 
+  count_number: 0
+  topic_name: "continuous_topic"
+  record_split_time: 60
+ data6: 
+  count_number: 0
+  topic_name: "continuous_topic"
+  record_split_time: 60
+
