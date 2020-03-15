@@ -4,6 +4,7 @@
 #import os
 import rospy
 import numpy as np
+import yaml
 
 from sensor_msgs.msg import JointState
 import tf2_ros
@@ -12,7 +13,7 @@ class PublishContinuousData(object):
     def __init__(self):
         _path =  __file__.split("/")[:-1]
         path  = "/".join(_path) + "/"
-        f = open(path + "../config/parametor.yaml", "r+")
+        f = open(path + "../config/parameter.yaml", "r+")
         self.param = yaml.load(f)["continuous_publish"]
         f.close()
 
@@ -20,6 +21,7 @@ class PublishContinuousData(object):
         self.lis = tf2_ros.TransformListener(self.buf)
         self.pub = rospy.Publisher(self.param["topic_name"], JointState, queue_size=10)
         self.rate = rospy.Rate(self.param["publish_hz"])
+        rospy.loginfo("init success")
 
     def data_publish(self):
         while not rospy.is_shutdown():

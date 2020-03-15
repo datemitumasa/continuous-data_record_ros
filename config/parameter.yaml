@@ -1,7 +1,7 @@
 continuous_publish:
 	- topic_name    : "continuous_topic"
 	- base_frame_id : "map"
-	- child_frame_id: "hand_link"
+	- child_frame_id: "hand_palm_link"
 	- publish_hz     : 10
 	- continuous_data_name: 
 		-	"x"
