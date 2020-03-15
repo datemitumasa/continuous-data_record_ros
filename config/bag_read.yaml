@@ -1,5 +1,5 @@
 filename:
-	- bag_record: 
-		- count_number: 10
-		- topic_name: "continuous_topic"
-		- record_split_time: 60
+ bag_record: 
+  count_number: 1
+  topic_name: "continuous_topic"
+  record_split_time: 60

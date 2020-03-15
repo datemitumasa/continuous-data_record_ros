@@ -4,6 +4,7 @@
 import numpy as np
 import os
 import rospy
+import yaml
 import pandas as pd
 
 from sensor_msgs.msg import JointState
@@ -29,7 +30,7 @@ if __name__=="__main__":
     path  = "/".join(_path) + "/"
     f = open(path + "../config/bag_read.yaml", "r+")
     param = yaml.load(f)
-    f.close()    args = sys.argv
+    f.close()
 
     file_names = param["filename"].keys()
     s = rospy.Time.now()
@@ -37,7 +38,7 @@ if __name__=="__main__":
     C = 0
     for i in range(len(file_names)):
         name = file_names[i]
-        topic_info = param[name]
+        topic_info = param["filename"][name]
         req = RosbagPlayRequest()
         req.name = name
         req.count_number = topic_info["count_number"]
@@ -67,4 +68,4 @@ if __name__=="__main__":
         mkdir(path + "../data")
         mkdir(path + "../data/csv")
         mkdir(path + "../data/csv/{}".format(name))
-        df.to_csv(path + "../data/"+"{}/{}.csv".format(name, topic_info["topic_name"]))
+        df.to_csv(path + "../data/csv/"+"{}/{}.csv".format(name, topic_info["topic_name"]))

@@ -38,9 +38,10 @@ NODE_NAME = "bag_record"
 
 BAG = os.getenv("BAG_FOLDA")
 if BAG== None:
+    print __file__
     _path =  __file__.split("/")[:-1]
     path  = "/".join(_path) + "/"    
-    BAG = os.getcwd() + "../data/bag"
+    BAG = path + "../data/bag"
     os.environ["BAG_FOLDA"] = BAG
 try:
     os.mkdir(BAG)
@@ -132,6 +133,7 @@ class RosbagRecorder(object):
 
         name = BAG + "/" + name
         command = MAIN_MESSAGE.format(dur, topic, name, node_name)
+        print command
         res = RosbagRecordResponse()
         rb = Process(target=os.system, args=[command])
         remind_data = [dur, topic, name, node_name]
@@ -144,9 +146,8 @@ class RosbagRecorder(object):
 
     def _stop_record(self, data):
 ##      停止
-        num = data.rosbag_number
         res = RosbagStopResponse()
-        if data.node_name == ""
+        if data.node_name == "":
             node_name = NODE_NAME 
         else:
             node_name = data.node_name

@@ -14,8 +14,13 @@ import yaml
 if __name__ == '__main__':
     rospy.init_node('rosbag_record_start')
     srv_record_stop = rospy.ServiceProxy("rosbag_record_stop", RosbagStop)
+    _path =  __file__.split("/")[:-1]
+    path  = "/".join(_path) + "/"
+    f = open(path + "../config/parameter.yaml", "r+")
+    param = yaml.load(f)
+    f.close()
     bs_req = RosbagStopRequest()
-    bs_req.node_name = param["record_info"]["record_name"]
+    bs_req.node_name = param["record_info"]["record_node_name"]
     res = srv_record_stop.call(bs_req)
     if res.success:
         rospy.loginfo("record stop")
