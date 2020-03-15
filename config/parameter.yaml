@@ -15,6 +15,7 @@ record_info:
  record_topic:
   - "continuous_topic"
   - "tf"
+  - "object_data"
  record_name: "bag_record"
  record_node_name: "continuous_record"
  record_split_time: 60
